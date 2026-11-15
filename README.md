@@ -1,7 +1,8 @@
 # AI Text Detector
 
-A beginner-friendly Python command-line project that estimates whether a piece of
-writing looks **AI-generated** or **human-written**.
+A beginner-friendly Python project that estimates whether a piece of writing
+looks **AI-generated** or **human-written**. It includes a browser-based Streamlit
+interface as well as a command-line version.
 
 The program checks each text with two detectors:
 
@@ -24,6 +25,8 @@ The required Python packages are listed in [`requirements.txt`](requirements.txt
 
 | File or folder | Purpose |
 | --- | --- |
+| [`streamlit_app.py`](streamlit_app.py) | Starts the interactive browser-based application |
+| [`run_app.bat`](run_app.bat) | Sets up dependencies on first use and launches the browser app on Windows |
 | [`main.py`](main.py) | Starts the interactive command-line application |
 | [`detectors.py`](detectors.py) | Contains the shared detector code and both detector classes |
 | [`config.py`](config.py) | Loads configuration values |
@@ -34,6 +37,13 @@ The required Python packages are listed in [`requirements.txt`](requirements.txt
 | [`requirements.txt`](requirements.txt) | Python dependencies |
 
 ## Quick start on Windows
+
+For a one-click launch, double-click [`run_app.bat`](run_app.bat). On first run,
+it creates a local `.venv` and installs the required packages; an internet
+connection is needed for this setup. The app then opens in your browser. Keep
+the command window open while using the app; closing it stops the app.
+
+You can also set up and run the app manually:
 
 Open PowerShell in the project folder:
 
@@ -68,7 +78,19 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 python -m pip install -r requirements.txt
 ```
 
-### 4. Run the detector
+### 4. Run the browser app
+
+```powershell
+streamlit run streamlit_app.py
+```
+
+The app opens in your browser. Paste a passage (at least **30 words**), choose
+the AI classification threshold in the sidebar, and select **Analyze passage**.
+You can try the built-in example, compare both detector results, download an
+analysis report, and export or clear the current session's history. Text and
+history are kept only in the active app session.
+
+To use the command-line version instead:
 
 ```powershell
 python main.py
